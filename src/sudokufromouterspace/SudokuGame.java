@@ -561,7 +561,24 @@ public final class SudokuGame extends JFrame implements ActionListener, KeyListe
     }
 
     public void loadGame(File fileName) {
+        for (int r = 0; r < sudokuMatrix.length; r++) {
 
+            for (int c = 0; c < sudokuMatrix[0].length; c++) {
+                labelPanel = (JLabel) sudokuMatrix[r][c].getComponent(0);
+                labelPanel.setText("");
+                sudokuMatrix[r][c].setEnabled(true);
+                if ((r / 3 + c / 3) % 2 == 0) {
+
+                    sudokuMatrix[r][c].setBackground(Color.getColor(nm, red));
+
+                } else {
+
+                    sudokuMatrix[r][c].setBackground(Color.white);
+                }
+            }
+
+        }
+        fillMatrixWithBasicSudoku();
         // This will reference one line at a time
         String line = null;
 
